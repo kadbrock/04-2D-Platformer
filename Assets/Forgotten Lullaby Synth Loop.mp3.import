@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Forgotten Lullaby Synth Loop.mp3-609048e05b1629b68c033132acc90c66.mp3str"
+
+[deps]
+
+source_file="res://Assets/Forgotten Lullaby Synth Loop.mp3"
+dest_files=[ "res://.import/Forgotten Lullaby Synth Loop.mp3-609048e05b1629b68c033132acc90c66.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
