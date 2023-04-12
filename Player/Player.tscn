@@ -197,12 +197,14 @@ extents = Vector2( 28.5, 32 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.5, 0.5 )
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 9 )
-max_move = 30
-jump_speed = 50
-max_jump = 100
-leap_speed = 50
-max_leap = 100
+max_move = 50
+jump_speed = 100
+max_jump = 500
+leap_speed = 100
+max_leap = 500
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
@@ -213,22 +215,29 @@ animation = "Die"
 position = Vector2( -1.5, 0 )
 shape = SubResource( 16 )
 
+[node name="Attack" type="RayCast2D" parent="."]
+enabled = true
+collision_mask = 3
+
+[node name="Attack_Low" type="RayCast2D" parent="."]
+enabled = true
+
 [node name="Floor" type="Node2D" parent="."]
 
 [node name="Left" type="RayCast2D" parent="Floor"]
-position = Vector2( -7, 26.125 )
+position = Vector2( -12, 24 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 30
 
 [node name="Center" type="RayCast2D" parent="Floor"]
-position = Vector2( -0.75, 26.125 )
+position = Vector2( -4, 24 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 30
 
 [node name="Right" type="RayCast2D" parent="Floor"]
-position = Vector2( 5.75, 26.125 )
+position = Vector2( 6, 24 )
 enabled = true
 cast_to = Vector2( 0, 5 )
 collision_mask = 2147483678
@@ -236,7 +245,7 @@ collision_mask = 2147483678
 [node name="Wall" type="Node2D" parent="."]
 
 [node name="Left" type="RayCast2D" parent="Wall"]
-position = Vector2( -4.04449, 0.25 )
+position = Vector2( -10, 0 )
 enabled = true
 cast_to = Vector2( -5, 0 )
 collision_mask = 30

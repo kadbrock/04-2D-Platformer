@@ -80,5 +80,19 @@ func set_wall_raycasts(is_enabled):
 	$Wall/Left.enabled = is_enabled
 	$Wall/Right.enabled = is_enabled
 
+func attack():
+	if $Attack.is_colliding():
+		var target = $Attack.get_collider()
+		if target.has_method("damage"):
+			target.damage()
+	if $Attack_low.is_colliding():
+		var target = $Attack_low.get_collider()
+		if target.has_method("damage"):
+			target.damage()
+
 func die():
 	queue_free()
+
+func _on_AnimatedSprite_animation_finished():
+	if $AnimatedSprite.animation == "Attacking":
+		SM.set_state("Idle")
