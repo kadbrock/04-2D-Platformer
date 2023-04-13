@@ -6,16 +6,16 @@ var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
 var direction = 1
 
-export var gravity = Vector2(0,30)
+export var gravity = Vector2(0,20)
 
-export var move_speed = 20
-export var max_move = 300
+export var move_speed = 100
+export var max_move = 1200
 
-export var jump_speed = 200
-export var max_jump = 1200
+export var jump_speed = 500
+export var max_jump = 1000
 
-export var leap_speed = 200
-export var max_leap = 1200
+export var leap_speed = 500
+export var max_leap = 1000
 
 var moving = false
 var is_jumping = false
@@ -25,6 +25,7 @@ var should_direction_flip = true # wether or not player controls (left/right) ca
 
 func _physics_process(_delta):
 	velocity.x = clamp(velocity.x,-max_move,max_move)
+	velocity.x = lerp(velocity.x,0,0.99)
 		
 	if should_direction_flip:
 		if direction < 0 and not $AnimatedSprite.flip_h: $AnimatedSprite.flip_h = true
@@ -33,6 +34,8 @@ func _physics_process(_delta):
 	if is_on_floor():
 		double_jumped = false
 		set_wall_raycasts(true)
+	print(velocity)
+
 
 func is_moving():
 	if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
@@ -53,12 +56,6 @@ func set_animation(anim):
 	if $AnimatedSprite.frames.has_animation(anim): $AnimatedSprite.play(anim)
 	else: $AnimatedSprite.play()
 
-func is_on_floor():
-	var fl = $Floor.get_children()
-	for f in fl:
-		if f.is_colliding():
-			return true
-	return false
 
 func is_on_right_wall():
 	if $Wall/Right.is_colliding():

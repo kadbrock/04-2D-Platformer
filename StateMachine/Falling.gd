@@ -11,7 +11,7 @@ func start():
 	player.jump_power = Vector2.ZERO
 
 func physics_process(_delta):
-	if player.is_on_floor() and player.velocity.y > 0:
+	if player.is_on_floor():
 		player.velocity.y = 0
 		if player.is_moving():
 			SM.set_state("Moving")
