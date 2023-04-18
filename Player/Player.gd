@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 onready var SM = $StateMachine
 
+onready var player = get_node("../..")
+
 var velocity = Vector2.ZERO
 var jump_power = Vector2.ZERO
 var direction = 1
@@ -87,7 +89,11 @@ func attack():
 		if target.has_method("damage"):
 			target.damage()
 
+func do_damage(d):
+	queue_free()
+
 func die():
+	player.set_animation("Die")
 	queue_free()
 
 func _on_AnimatedSprite_animation_finished():
