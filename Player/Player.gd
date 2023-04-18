@@ -36,7 +36,6 @@ func _physics_process(_delta):
 	if is_on_floor():
 		double_jumped = false
 		set_wall_raycasts(true)
-	print(velocity)
 
 
 func is_moving():
@@ -89,7 +88,7 @@ func attack():
 		if target.has_method("damage"):
 			target.damage()
 
-func do_damage(d):
+func do_damage(_d):
 	queue_free()
 
 func die():
