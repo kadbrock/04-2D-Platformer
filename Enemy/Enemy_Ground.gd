@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export var speed = 25
 export var damage = 10
+export var max_constraint = 100
+export var min_constraint = -100
 var direction = 1
 var velocity = Vector2.ZERO
 

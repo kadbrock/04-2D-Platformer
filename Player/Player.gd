@@ -88,11 +88,13 @@ func attack():
 		if target.has_method("damage"):
 			target.damage()
 
-func do_damage(_d):
-	queue_free()
+func do_damage(d):
+	Global.decrease_health(d)
+	if Global.health <= 0:
+		die()
 
 func die():
-	player.set_animation("Die")
+	Global.decrease_lives(1)
 	queue_free()
 
 func _on_AnimatedSprite_animation_finished():
